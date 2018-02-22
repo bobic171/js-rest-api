@@ -28,7 +28,7 @@ exports.read_a_note = function (req, res) {
     });
 };
 
-exports.update_note = function (req, res) {
+exports.update_a_note = function (req, res) {
     Note.findByIdAndUpdate({
         _id: req.params.noteId
     }, req.body, {
