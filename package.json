@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/bobic171/js-rest-api/issues"
   },
-  "homepage": "https://github.com/bobic171/js-rest-api#readme"
+  "homepage": "https://github.com/bobic171/js-rest-api#readme",
+  "devDependencies": {
+    "nodemon": "^1.15.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
