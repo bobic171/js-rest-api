@@ -1,11 +1,12 @@
-`use strict`;
+'use strict';
+
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 let NoteSchema = new Schema({
     name: {
         type: String,
-        required: 'Name of the note'
+        required: 'Name of note'
     },
     Created_date: {
         type: Date,

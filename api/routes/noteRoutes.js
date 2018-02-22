@@ -1,5 +1,6 @@
-`use strict`;
-module.exports = function(app) {
+'use strict';
+
+module.exports = function (app) {
     let list = require('../controllers/listController');
 
     //List Routes
