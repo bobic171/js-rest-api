@@ -1,15 +1,15 @@
 'use strict';
 
 module.exports = function (app) {
-    let list = require('../controllers/listController');
+    var list = require('../controllers/noteController');
 
     //List Routes
-    app.route('/tasks')
-        .get(list.list_all_tables)
+    app.route('/notes')
+        .get(list.list_all_notes)
         .post(list.create_a_note);
 
-    app.route('/tasks/:noteId')
+    app.route('/notes/:noteId')
         .get(list.read_a_note)
         .put(list.update_a_note)
-        .delete(list.delete_a_note)
-}
+        .delete(list.delete_a_note);
+};

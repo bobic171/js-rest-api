@@ -1,6 +1,6 @@
 'use strict';
 
-let mongoose = require('mongoose'),
+var mongoose = require('mongoose'),
     Note = mongoose.model('Notes');
 
 exports.list_all_notes = function (req, res) {
@@ -12,7 +12,7 @@ exports.list_all_notes = function (req, res) {
 };
 
 exports.create_a_note = function (req, res) {
-    let new_note = new Note(req.body);
+    var new_note = new Note(req.body);
     new_note.save(function (err, note) {
         if (err)
             res.send(err);
