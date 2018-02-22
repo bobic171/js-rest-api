@@ -9,6 +9,10 @@ let express = require('express'),
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Notes');
 
+app.use(function (req, res) {
+    res.status(404).send({url: req.originalUrl + ' no idea what your looking for'})
+});
+
 app.use(bodyParser.urlencoded({
     extended: true
 }));
