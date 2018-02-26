@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/bobic171/js-rest-api#readme",
   "devDependencies": {
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.15.1",
+    "jasmine-node": "1.3.1"
   },
   "dependencies": {
     "express": "^4.16.2",
