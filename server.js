@@ -42,7 +42,9 @@ app.use(bodyParser.json({
     type: 'application/json'
 }));
 
-app.get("/", (req, res) => res.json({mesage: "--Noter--"}));
+app.get("/", (req, res) => res.json({
+    mesage: "--Noter--"
+}));
 
 let routes = require('./api/routes/noteRoutes');
 
@@ -53,7 +55,9 @@ app.listen(port);
 console.log("Port : " + port);
 
 app.use(function (req, res) {
-    res.status(404).send({url: req.originalUrl + 'Oops'});
+    res.status(404).send({
+        url: req.originalUrl + 'Oops'
+    });
 });
 
 module.exprts = app;

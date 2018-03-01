@@ -33,7 +33,7 @@ let NoteSchema = new Schema({
 
 NoteSchema.pre('save', next => {
     now = new Date();
-    if(!this.Created_date){
+    if (!this.Created_date) {
         this.Created_date = now;
     }
     next();

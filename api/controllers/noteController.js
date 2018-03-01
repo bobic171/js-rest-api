@@ -68,4 +68,10 @@ function updateNote(req, res) {
     });
 }
 
-module.exports = { postNote, getNote, getNotes, updateNote, deleteNote};
+module.exports = {
+    postNote,
+    getNote,
+    getNotes,
+    updateNote,
+    deleteNote
+};

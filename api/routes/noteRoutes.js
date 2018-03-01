@@ -16,5 +16,5 @@ function noteRouting(app) {
 };
 
 module.exports = {
-   noteRouting
+    noteRouting
 };
