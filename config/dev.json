@@ -1,0 +1,3 @@
+{
+    "Management_Database":"'mongodb://localhost/DevNotes'"
+}

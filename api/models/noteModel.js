@@ -3,10 +3,20 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var NoteSchema = new Schema({
+let NoteSchema = new Schema({
     name: {
+        type: String
+    },
+    user_id: {
         type: String,
-        required: 'Name of note'
+        required: true
+    },
+    note_id: {
+        type: String,
+        required: true
+    },
+    content: {
+        type: String
     },
     Created_date: {
         type: Date,
@@ -21,4 +31,12 @@ var NoteSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Notes', NoteSchema);
+NoteSchema.pre('save', next => {
+    now = new Date();
+    if(!this.Created_date){
+        this.Created_date = now;
+    }
+    next();
+});
+
+module.exports = mongoose.model('note', NoteSchema);

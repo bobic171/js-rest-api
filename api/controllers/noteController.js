@@ -1,53 +1,71 @@
 'use strict';
 
-var mongoose = require('mongoose'),
-    Note = mongoose.model('Notes');
+let mongoose = require('mongoose');
 
-exports.list_all_notes = function (req, res) {
-    Note.find({}, function (err, note) {
-        if (err)
-            res.send(err);
-        res.send(note);
+let note = require('../models/noteModel');
+
+// Get  /note
+function getNotes(req, res) {
+    let query = Note.find({});
+    query, exec((err, notes) => {
+        if (err) res.send(err);
+
+        res.json(notes);
     });
-};
+}
 
-exports.create_a_note = function (req, res) {
-    var new_note = new Note(req.body);
-    new_note.save(function (err, note) {
-        if (err)
-            res.send(err);
+// Post  /note/:id
+function postNote(req, res) {
+    var newNote = Note(req.body);
+
+    newNote.save((err, note) => {
+        if (err) {
+            res.sernd(err);
+        } else {
+            res.json({
+                message: "Saved",
+                note
+            });
+        }
+    });
+}
+
+// Get  /note/:id
+function getNote(req, res) {
+    Note.findById(req.parrams.id, (err, note) => {
+        if (err) res.send(err);
+
         res.json(note);
     });
-};
+}
 
-exports.read_a_note = function (req, res) {
-    Note.findById(req.params.noteId, function (err, note) {
-        if (err)
-            res.send(err);
-        res.json(note);
-    });
-};
-
-exports.update_a_note = function (req, res) {
-    Note.findByIdAndUpdate({
-        _id: req.params.noteId
-    }, req.body, {
-        new: true
-    }, function (err, note) {
-        if (err)
-            res.send(err);
-        res.json(note);
-    });
-};
-
-exports.delete_a_note = function (req, res) {
+// Delete /note/:id
+function deleteNote(req, res) {
     Note.remove({
-        _id: req.params.noteId
-    }, function (err, note) {
-        if (err)
-            res.send(err);
+        _id: req.parrams.id
+    }, (err, result) => {
         res.json({
-            messege: 'Note removed'
+            message: "Deleted",
+            result
         });
     });
-};
+}
+
+//Pup 'note/:id
+function updateNote(req, res) {
+    Note.findById({
+        _id: req.parrams.id
+    }, (err, book) => {
+        if (err) res.send(err);
+
+        Object.assign(note, req.body).save((err, note) => {
+            if (err) res.send(err);
+            res.json({
+                messege: 'Updated',
+                note
+            });
+        });
+    });
+}
+
+module.exports = { postNote, getNote, getNotes, updateNote, deleteNote};
