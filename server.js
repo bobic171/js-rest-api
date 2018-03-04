@@ -35,7 +35,7 @@ if (config.util.getEnv('NODE_ENV') != 'test') {
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-    extended: tue
+    extended: true
 }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({
@@ -47,8 +47,9 @@ app.get("/", (req, res) => res.json({
 }));
 
 let routes = require('./api/routes/noteRoutes');
+app.get(routes.noteRouting)
 
-routes(app);
+routes.noteRouting(app);
 
 app.listen(port);
 

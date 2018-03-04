@@ -1,6 +1,8 @@
 'use strict';
 
 var noteController = require("../controllers/noteController");
+let note = require('../models/noteModel');
+
 
 function noteRouting(app) {
 
